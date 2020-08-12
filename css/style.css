@@ -1,0 +1,200 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/*  we want the user to be able to change their font size for accessibility reasons, 
+so don't define a px amount here. instead, use %, which doesn't override user settings
+
+if we still want to set 10px as a base, for easy rem value calculations, 
+set a % that = 10px when the default font size is 16px for browsers.  
+
+10px / 16px = 62.5% */
+html {
+  font-size: 62.5%; 
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.header {
+  position: relative;
+  height: 95vh;
+  background-image: linear-gradient(
+    to right bottom, 
+    rgba(126, 213, 111, 0.8), 
+    rgba(40, 180, 133, 0.80)),
+  url(../img/hero.jpg); 
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.logo {
+  height: 3.5rem;
+  width: auto;
+}
+
+.header-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 600;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 1.65rem;
+  text-indent: -1.4rem;
+  animation-name: moveInRight;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  margin-bottom: 6rem;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-15rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(15rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0); 
+  }
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 2rem 4.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 10rem;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  transition: .2s;
+  box-shadow: 0 10px 2rem rgba(0,0,0,.2);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  transition: .2s;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+  font-size: 1.6rem;
+}
+
+.btn-white:after {
+  background: white;
+}
+
+.btn:hover::after {
+  transform: scale(1.2, 1.5);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+}
